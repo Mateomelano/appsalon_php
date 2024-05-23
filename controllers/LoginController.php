@@ -77,7 +77,7 @@ class LoginController {
 
                     //  Enviar el email
                     $email = new Email($usuario->email, $usuario->nombre, $usuario->token);
-                    $email->enviarInstrucciones();
+                    $email->enviarInstrucciones($usuario->email);
 
                     // Alerta de exito
                     Usuario::setAlerta('exito', 'Revisa tu email');
@@ -161,7 +161,7 @@ class LoginController {
 
                     // Enviar el Email
                     $email = new Email($usuario->nombre, $usuario->email, $usuario->token);
-                    $email->enviarConfirmacion();
+                    $email->enviarConfirmacion($usuario->email);
 
                     // Crear el usuario
                     $resultado = $usuario->guardar();
